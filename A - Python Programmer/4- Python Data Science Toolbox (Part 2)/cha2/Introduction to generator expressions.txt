@@ -1,0 +1,95 @@
+1-	List comprehensions vs generators
+You've seen from the videos that list comprehensions and generator expressions look very similar in their syntax, except for the use of parentheses () in generator expressions and brackets [] in list comprehensions.
+In this exercise, you will recall the difference between list comprehensions and generators. To help with that task, the following code has been pre-loaded in the environment:
+# List of strings
+fellowship = ['frodo', 'samwise', 'merry', 'aragorn', 'legolas', 'boromir', 'gimli']
+
+# List comprehension
+fellow1 = [member for member in fellowship if len(member) >= 7]
+
+# Generator expression
+fellow2 = (member for member in fellowship if len(member) >= 7)
+Try to play around with fellow1 and fellow2 by figuring out their types and printing out their values. Based on your observations and what you can recall from the video, select from the options below the best description for the difference between list comprehensions and generators.
+Instructions
+
+Possible Answers
+•	 
+List comprehensions and generators are not different at all; they are just different ways of writing the same thing.
+•	 
+A list comprehension produces a list as output, a generator produces a generator object.
+•	 
+A list comprehension produces a list as output that can be iterated over, a generator produces a generator object that can't be iterated over.
+
+
+2-	Write your own generator expressions
+You are familiar with what generators and generator expressions are, as well as its difference from list comprehensions. In this exercise, you will practice building generator expressions on your own.
+Recall that generator expressions basically have the same syntax as list comprehensions, except that it uses parentheses () instead of brackets []; this should make things feel familiar! Furthermore, if you have ever iterated over a dictionary with .items(), or used the range() function, for example, you have already encountered and used generators before, without knowing it! When you use these functions, Python creates generators for you behind the scenes.
+Now, you will start simple by creating a generator object that produces numeric values.
+Instructions
+•	Create a generator object that will produce values from 0 to 30. Assign the result to result and use num as the iterator variable in the generator expression.
+•	Print the first 5 values by using next() appropriately in print().
+•	Print the rest of the values by using a for loop to iterate over the generator object.
+Answer / Script.py
+
+
+# Create generator object: result
+result = (num for num in range(31))
+
+# Print the first 5 values
+print(next(result))
+print(next(result))
+print(next(result))
+print(next(result))
+print(next(result))
+
+# Print the rest of the values
+for value in result:
+    print(value)
+
+3-	Changing the output in generator expressions
+Great! At this point, you already know how to write a basic generator expression. In this exercise, you will push this idea a little further by adding to the output expression of a generator expression. Because generator expressions and list comprehensions are so alike in syntax, this should be a familiar task for you!
+You are given a list of strings lannister and, using a generator expression, create a generator object that you will iterate over to print its values.
+Instructions
+•	Write a generator expression that will generate the lengths of each string in lannister. Use person as the iterator variable. Assign the result to lengths.
+•	Supply the correct iterable in the for loop for printing the values in the generator object.
+Answer / Script.py
+
+# Create a list of strings: lannister
+lannister = ['cersei', 'jaime', 'tywin', 'tyrion', 'joffrey']
+
+# Create a generator object: lengths
+lengths = (len(person) for person in lannister)
+
+# Iterate over and print the values in lengths
+for value in lengths:
+    print(value)
+
+
+
+
+4-	Build a generator
+In previous exercises, you've dealt mainly with writing generator expressions, which uses comprehension syntax. Being able to use comprehension syntax for generator expressions made your work so much easier!
+Now, recall from the video that not only are there generator expressions, there are generator functions as well. Generator functions are functions that, like generator expressions, yield a series of values, instead of returning a single value. A generator function is defined as you do a regular function, but whenever it generates a value, it uses the keyword yield instead of return.
+In this exercise, you will create a generator function with a similar mechanism as the generator expression you defined in the previous exercise:
+lengths = (len(person) for person in lannister)
+Instructions
+•	Complete the function header for the function get_lengths() that has a single parameter, input_list.
+•	In the for loop in the function definition, yield the length of the strings in input_list.
+•	Complete the iterable part of the for loop for printing the values generated by the get_lengths() generator function. Supply the call to get_lengths(), passing in the list lannister
+Answer / Script.py
+
+# Create a list of strings
+lannister = ['cersei', 'jaime', 'tywin', 'tyrion', 'joffrey']
+
+# Define generator function get_lengths
+def get_lengths(input_list):
+    """Generator function that yields the
+    length of the strings in input_list."""
+
+    # Yield the length of a string
+    for person in input_list:
+        yield len(person) 
+
+# Print the values generated by get_lengths()
+for value in get_lengths(lannister):
+    print(value)
